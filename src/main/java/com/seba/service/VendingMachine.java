@@ -66,7 +66,7 @@ public class VendingMachine {
 
 	public void adminReset() {
 		System.out.println("Admin reset initiated. Resetting vending machine...");
-		System.out.println("Total coins before reset: " + totalCoins.entrySet().stream()
+		System.out.printf("Total credit before reset: %.2f$\n", totalCoins.entrySet().stream()
 				.mapToDouble(v -> v.getKey().getValue().multiply(BigDecimal.valueOf(v.getValue())).doubleValue())
 				.sum()
 		);
