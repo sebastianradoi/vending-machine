@@ -66,18 +66,29 @@ public class VendingMachine {
 
 	public void adminReset() {
 		System.out.println("Admin reset initiated. Resetting vending machine...");
-		System.out.printf("Total credit before reset: %.2f$\n", totalCoins.entrySet().stream()
-				.mapToDouble(v -> v.getKey().getValue().multiply(BigDecimal.valueOf(v.getValue())).doubleValue())
-				.sum()
+		System.out.printf("Total credit before reset: %.2f$\n", getTotalCash()
 		);
 		resetMachine();
 		System.out.println("Admin reset successful. Vending machine is ready for use.");
 	}
 
-	public void printCoins() {
-		System.out.println("Current coins in the machine:");
+	private double getTotalCash() {
+		return totalCoins.entrySet().stream()
+				.mapToDouble(v -> v.getKey().getValue().multiply(BigDecimal.valueOf(v.getValue())).doubleValue())
+				.sum();
+	}
+
+	public void printStats() {
+		System.out.println("\nCurrent coins in the machine:");
 		totalCoins.forEach((coin, count) -> {
-			System.out.printf("%s: %d%n", coin.name(), count);
+			System.out.printf(" - %s: %d%n", coin.name(), count);
+		});
+
+		System.out.printf("\nTotal cash: %.2f$%n", getTotalCash());
+
+		System.out.println("\nAvailable products:");
+		products.forEach((product, count) -> {
+			System.out.printf(" - %s (%.2f$): %d%n", product.getName(), product.getPrice(), count);
 		});
 	}
 
@@ -164,6 +175,5 @@ public class VendingMachine {
 	Map<Product, Long> getProducts() {
 		return products;
 	}
-
 
 }

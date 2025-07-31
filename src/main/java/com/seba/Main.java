@@ -19,7 +19,7 @@ public class Main {
 				System.out.println("2. Select Product");
 				System.out.println("3. Cancel Transaction");
 				System.out.println("4. Operator: Reset Machine");
-				System.out.println("5. Operator: Print Coins");
+				System.out.println("5. Operator: Print Stats");
 				System.out.println("0. Exit");
 				System.out.print("Choose an option: ");
 
@@ -69,7 +69,7 @@ public class Main {
 						vm.adminReset();
 						break;
 					case 5:
-						vm.printCoins();
+						vm.printStats();
 						break;
 					case 0:
 						running = false;
