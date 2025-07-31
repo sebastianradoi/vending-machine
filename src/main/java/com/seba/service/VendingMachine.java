@@ -81,7 +81,7 @@ public class VendingMachine {
 		});
 	}
 
-	private void initMachine() {
+	protected void initMachine() {
 		this.products = new EnumMap<>(Product.class);
 		this.products.putAll(Map.of(
 				Product.COKE, 5L,
@@ -156,5 +156,14 @@ public class VendingMachine {
 		this.balance = localBalance;
 		return change;
 	}
+
+	Map<Coin, Long> getTotalCoins() {
+		return totalCoins;
+	}
+
+	Map<Product, Long> getProducts() {
+		return products;
+	}
+
 
 }
