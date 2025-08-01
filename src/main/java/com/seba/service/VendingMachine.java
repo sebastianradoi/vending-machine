@@ -130,6 +130,7 @@ public class VendingMachine {
 						.map(value -> String.format("%.2f", value))
 						.collect(Collectors.joining(", ")));
 				System.out.println("Thank you for your purchase!");
+				insertedCoins.clear();
 
 			} catch (NotEnoughCoinsForChange e) {
 				products.computeIfPresent(product, (k, v) -> v + 1);
